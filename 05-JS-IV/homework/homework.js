@@ -38,11 +38,11 @@ function multiplicarNumeroDesconocidoPorCinco(objetoMisterioso) {
   // "objetoMisterioso" tiene una propiedad llamada "numeroMisterioso"
   // Multiplica el numeroMisterioso por 5 y devuelve el producto
   // Tu código:
-  // var objMisterioso = {
+  // var objetoMisterioso = {
   //   numeroMisterioso: 9
   // }
-
-  var resultado = objetoMisterioso[numeroMisterioso] * 5;
+  var resultado = objetoMisterioso.numeroMisterioso * 5;
+  
   return resultado;
 
 }
@@ -73,12 +73,12 @@ function tieneEmail(usuario) {
   // Devuelve "true" si el usuario tiene un valor definido para la propiedad "email"
   // De lo contratio, devuelve "false"
   // Tu código:
-  if(usuario[email]){
+  if(usuario['email']) {  
     return true;
+  } else {
+    return false;
   }
-  return false;
 }
-
 
 
 function tienePropiedad(objeto, propiedad) {
@@ -109,7 +109,7 @@ function actualizarPassword(usuario, nuevaPassword) {
   // Reemplaza la contraseña existente en el objeto "usuario" con el valor de "nuevagPassword"
   // Devuelve el objeto
   // Tu código:
-  usuario[nuevaPassword] = "nuevagPassword";
+  usuario["password"] = nuevaPassword;
   return usuario;
 }
 
@@ -118,7 +118,7 @@ function agregarAmigo(usuario, nuevoAmigo) {
   // Agrega "nuevoAmigo" al final de ese array
   // Devuelve el objeto "usuario"
   // // Tu código:
-  usuario[amigos].push(nuevoAmigo);
+  usuario["amigos"].push(nuevoAmigo);
   return usuario;
 }
 
@@ -140,6 +140,16 @@ function sumarLikesDeUsuario(usuario) {
   // Suma todos los likes de todos los objetos "post"
   // Devuelve la suma
   // Tu código:
+// var usuario = {
+//   posts: [{
+         // likes: 3
+        // }]
+// };
+ var suma = 0;
+ for(var i = 0; i < usuario.posts.length; i++){
+   suma = suma + usuario.posts[i].likes;
+ }
+ return suma;
 }
 
 function agregarMetodoCalculoDescuento(producto) {
@@ -152,7 +162,15 @@ function agregarMetodoCalculoDescuento(producto) {
   // producto.porcentajeDeDescuento -> 0.2 (o simplemente ".2")
   // producto.calcularPrecioDescuento() -> 20 - (20 * 0.2)
   // Tu código:
-
+  // var product = {
+  //   precio: 10,
+  //   porcentajeDeDescuento: 5,
+  //   calcularPrecioDescuento:
+  // };
+  producto.calcularPrecioDescuento = function() {
+    return this.precio - ( this.precio * this.porcentajeDeDescuento );
+  };
+  return producto;
 }
 
 // No modificar nada debajo de esta línea
